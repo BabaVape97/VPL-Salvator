@@ -3,6 +3,7 @@ package com.example.dominiklebeau.vpl_salvator.app;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
