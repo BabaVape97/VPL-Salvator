@@ -69,7 +69,7 @@ public class AktienlisteFragment extends Fragment {
         // Wir prÃ¼fen, ob MenÃ¼-Element mit der ID "action_daten_aktualisieren"
         // ausgewÃ¤hlt wurde und geben eine Meldung aus
         int id = item.getItemId();
-        if (id == R.id.action_daten_aktualisieren) {
+        if (id == R.string.action_daten_aktualisieren) {
 
             // Erzeugen einer Instanz von HoleDatenTask und starten des asynchronen Tasks
             HoleDatenTask holeDatenTask = new HoleDatenTask();
@@ -166,7 +166,7 @@ public class AktienlisteFragment extends Fragment {
     public class HoleDatenTask extends AsyncTask<String, Integer, String[]> {
 
         private final String LOG_TAG = HoleDatenTask.class.getSimpleName();
-        private String[] leseXmlAktiendatenAus(String xmlString) {
+        private String[][] leseXmlAktiendatenAus(String xmlString) {
 
             Document doc;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -192,7 +192,6 @@ public class AktienlisteFragment extends Fragment {
             int anzahlAktien = aktienListe.getLength();
             int anzahlAktienParameter = aktienListe.item(0).getChildNodes().getLength();
 
-            String[] ausgabeArray = new String[anzahlAktien];
             String[][] alleAktienDatenArray = new String[anzahlAktien][anzahlAktienParameter];
 
             Node aktienParameter;
@@ -205,17 +204,9 @@ public class AktienlisteFragment extends Fragment {
                     aktienParameterWert = aktienParameter.getFirstChild().getNodeValue();
                     alleAktienDatenArray[i][j] = aktienParameterWert;
                 }
-
-                ausgabeArray[i]  = alleAktienDatenArray[i][0];                // symbol
-                ausgabeArray[i] += ": " + alleAktienDatenArray[i][4];         // price
-                ausgabeArray[i] += " " + alleAktienDatenArray[i][2];          // currency
-                ausgabeArray[i] += " (" + alleAktienDatenArray[i][8] + ")";   // percent
-                ausgabeArray[i] += " - [" + alleAktienDatenArray[i][1] + "]"; // name
-
-                Log.v(LOG_TAG,"XML Output:" + ausgabeArray[i]);
             }
 
-            return ausgabeArray;
+            return alleAktienDatenArray;
         }
 
 
