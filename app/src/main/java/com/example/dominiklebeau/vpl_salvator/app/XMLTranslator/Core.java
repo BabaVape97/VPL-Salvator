@@ -51,7 +51,7 @@ public class Core {
 
     public class AktienlisteFragment extends Fragment {
 
-        // Der ArrayAdapter ist jetzt eine Membervariable der Klasse AktienlisteFragment
+        // Der ArrayAdapter ist jetzt eine Membervariable der KlassenSession AktienlisteFragment
         ArrayAdapter<String> mAktienlisteAdapter;
 
         public AktienlisteFragment() {
@@ -131,7 +131,7 @@ public class Core {
             return rootView;
         }
 
-        // Innere Klasse HoleDatenTask führt den asynchronen Task auf eigenem Arbeitsthread aus
+        // Innere KlassenSession HoleDatenTask führt den asynchronen Task auf eigenem Arbeitsthread aus
         public class HoleDatenTask extends AsyncTask<String, Integer, String[]> {
 
             private final String LOG_TAG = HoleDatenTask.class.getSimpleName();
@@ -176,9 +176,9 @@ public class Core {
                         kompletterVertretungsplan[i][j] = aktienParameterWert;
                     }
 
-                    ausgabeArray[i] = kompletterVertretungsplan[i][0];                // Lehrer
+                    ausgabeArray[i] = kompletterVertretungsplan[i][0];                // LehrerSession
                     ausgabeArray[i] += ": " + kompletterVertretungsplan[i][4];         // Raum
-                    ausgabeArray[i] += " " + kompletterVertretungsplan[i][2];          // Stunde
+                    ausgabeArray[i] += " " + kompletterVertretungsplan[i][2];          // KlassenSession
                     ausgabeArray[i] += " (" + kompletterVertretungsplan[i][8] + ")";   // Status(Frei/Vertretung)
                     ausgabeArray[i] += " - [" + kompletterVertretungsplan[i][1] + "]"; // (Frei für weitere Ergänzungen)
 
